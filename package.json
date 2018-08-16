@@ -7,14 +7,16 @@
   "license": "MIT",
   "scripts": {
     "test": "standard",
-    "start": "nodemon src/index.js --exec babel-node && yarn clear",
-    "clear": "rimraf ./node_modules/.cache/babel-loader",
-    "build": "yarn clear && babel src --out-dir dist",
-    "serve": "yarn clear && node dist/index.js"
+    "start": "yarn clear:cache && nodemon src/index.js --exec babel-node",
+    "clear:cache": "rimraf ./node_modules/.cache/babel-loader",
+    "clear:all": "yarn clear:cache && rimraf ./dist",
+    "build": "yarn clear:all && babel src --out-dir dist",
+    "serve": "node dist/index.js"
   },
   "dependencies": {
     "apollo-server": "^2.0.0",
-    "graphql": "^0.13.2"
+    "graphql": "^0.13.2",
+    "mongoose": "^5.2.8"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
