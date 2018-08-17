@@ -7,7 +7,12 @@ mongoose.connect(config.db.uri, {
   ...config.db.connectionOptions,
   useNewUrlParser: true
 })
-const server = new ApolloServer({ typeDefs, resolvers })
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  debug: process.NODE_ENV === 'production'
+})
 
 server.listen({
   port: config.commons.port

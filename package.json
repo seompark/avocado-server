@@ -11,7 +11,7 @@
     "clear:cache": "rimraf ./node_modules/.cache/babel-loader",
     "clear:all": "yarn clear:cache && rimraf ./dist",
     "build": "yarn clear:all && babel src --out-dir dist",
-    "serve": "node dist/index.js"
+    "serve": "cross-env NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
     "apollo-server": "^2.0.0",
@@ -24,6 +24,7 @@
     "babel-plugin-import-graphql": "^2.6.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.2.0",
     "nodemon": "^1.18.3",
     "rimraf": "^2.6.2",
     "standard": "^11.0.1"
